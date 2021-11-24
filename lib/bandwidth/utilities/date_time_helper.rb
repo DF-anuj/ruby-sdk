@@ -11,7 +11,7 @@ module Bandwidth
     # @param [DateTime] The DateTime object
     # @return [String] The rfc1123 formatted datetime string
     def self.to_rfc1123(date_time)
-      date_time&.httpdate
+      date_time.try(:httpdate)
     end
 
     # Safely converts a map of DateTime objects into a map of rfc1123 format string
@@ -91,7 +91,7 @@ module Bandwidth
     # @param [DateTime] The DateTime object
     # @return [String] The rfc3339 formatted datetime string
     def self.to_rfc3339(date_time)
-      date_time&.rfc3339
+      date_time.try(:rfc3339)
     end
 
     # Safely converts a map of DateTime objects into a map of rfc1123 format string
