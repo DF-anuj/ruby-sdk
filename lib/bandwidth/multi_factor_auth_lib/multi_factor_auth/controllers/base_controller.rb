@@ -24,8 +24,10 @@ module Bandwidth
     end
 
     def execute_request(request, binary: false)
-      @http_call_back.try(:on_before_request.(request))
-
+      if @http_call_back
+        @http_call_back.on_before_request(request)
+      end
+      
       APIHelper.clean_hash(request.headers)
       request.headers.merge!(@global_headers)
 
